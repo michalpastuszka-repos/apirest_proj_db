@@ -2,7 +2,6 @@ import time
 
 from functools import cache
 
-
 N: int = 400
 
 # def cache(fnc):
@@ -24,3 +23,4 @@ print(fib_recursion_results)
 print(f"Rekurencyjnie zajeło: {fib_recursion_end_time - fib_recursion_start_time}")
 
 # z cache 0.0010085105895996094
+

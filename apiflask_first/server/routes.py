@@ -2,6 +2,7 @@ from apiflask_first.database.models import DB, Footboolers
 from apiflask_first.database.serializers import FootboolerInSchema, FootboolerOutSchema
 from . import SERVER_BLUEPRINT
 from apiflask import HTTPTokenAuth
+
 # wapiflasku nie uzywamy formularzy !!!
 # Update, Delete
 
