@@ -10,65 +10,43 @@
 #         except ZeroDivisionError:
 #             print("Nie mozna dzielic przez zero")
 #         except ValueError:
-#             print("blad valueError-nie wprowadziles liczby!!!")
+#             print("To raczej liczba nie jest. Spróbuj ponownie!!!!")
 #         else:
 #             example1()
 
 # example1()
 
 
-def example2(L):
-    print("\n\nExample 2")
+# def example2(L):
+#     try:
+#         print("\n\nExample 2")
+#         sumOfPairs = []
+#         for i in range(len(L)):
+#             sumOfPairs.append(L[i]+L[i+1])
+#             print("sumOfPairs=",sumOfPairs)
+#     except IndexError:
+#         print('Koniec listy -> brakuje juz elementow w liscie do dodawania')
+#     except TypeError:
+#         print("lista [L] zawiera litere nie liczbe -> nie moge dodac liczby do litery")
+#     else:
+#         example2(L)
+#
+#
+# L = [10,3,5,6,9,3]
+# example2(L)
+# example2([10,3,5,6,"NA",3])
+# example2([10,3,5,6])
+
+def printUpperFile(fileName):
     try:
-        sum = 0
-        sumOfPairs = []
-        for i in range(len(L)):
-            sumOfPairs.append(L[i]+L[i+1])   #dodaje kolejne elementy listy
-            print("sumOfPairs=",sumOfPairs)
-    except IndexError:
-        ('brakuje juz elementow w liscie')
-    except TypeError:
-        print("list [L] zawiera litere nie liczbe")
+        file = open(fileName, "r")
+        for line in file:
+            print(line.upper())
+    except FileNotFoundError as e:
+        print(f"nie ma takiego pliku {fileName}-> {type(e)}")
+    else:
+        file.close()
 
+printUpperFile("doesNotExistYest.txt")
+printUpperFile("./Dessssktop/misspelled.txt")
 
-
-L = [10,3,5,6,9,3]
-example2(L)
-example2([10,3,5 ,6 ,"NA" ,3])
-example2( [ 10 , 3 , 5 , 6 ] )
-#
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# def printUpperFile(fileName):
-#     file = open("fileName", "r" )
-#     for line in file:
-#         print(line.upper())
-#         file.close()
-#
-# printUpperFile("doesNotExistYest.txt")
-# printUpperFile("./Dessssktop/misspelled.txt")

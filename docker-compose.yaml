@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  apiflask-first:
+    build: .
+    hostname: apiflask_first
+    ports:
+      - '5000:5000'
+    command: "python run.py"
+    volumes:
+      - .:/app
+
+#  db:
+#    build: .
+#    hostname: apiflask-database
+#    ports:
+#      - '5001:5001'
+#    volumes:
+
