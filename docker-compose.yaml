@@ -3,25 +3,32 @@ version: '3'
 services:
   database:
     container_name: postgres_database
-    image: postgres:alpine
+    image: postgres:latest
     restart: on-failure
     healthcheck:
       test: ['CMD','curl','-f', "http://localhost:5000/docs"]
-      interval: 1m30s
-      timeout: 10s
+      interval: 5m
+      timeout: 30s
       retries: 3
     environment:
       - POSTGRES_PASSWORD=password
       - POSTGRES_USER=michal
-      - POSTGRES_HOST_AUTH_METHOD=scram-sha-256
+      - POSTGRES_DB=database
     ports:
       - '5432:5432'
     volumes:
-      - .:/app:/var/lib/postgresql
+      - ./db-data:/var/lib/postgresql
+
+
 
   apiflask-first:
     build: .
     hostname: apiflask_first
+    healthcheck:
+      test: [ 'CMD','curl','-f', "http://localhost:5000/docs" ]
+      interval: 5m
+      timeout: 30s
+      retries: 3
     ports:
       - '5000:5000'
     command: "python run.py"
