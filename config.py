@@ -8,4 +8,4 @@ class Config:
     DEBUG: bool = True
     SECRET_KEY: str = "".join(sample(ascii_letters, 14))
     SQLALCHEMY_TRACK_MODIFICATIONS: bool = False
-    SQLALCHEMY_DATABASE_URI: str = "sqlite:///database/api_flask_first.db"
+    SQLALCHEMY_DATABASE_URI: str = "postgresql+psycopg2://postgres:postgres@db:5432/postgres"

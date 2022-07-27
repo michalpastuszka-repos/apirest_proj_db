@@ -2,22 +2,23 @@ version: '3'
 
 services:
   database:
-    container_name: postgres_database
+    hostname: db
+    container_name: db
     image: postgres:latest
-    restart: on-failure
     healthcheck:
-      test: ['CMD','curl','-f', "http://localhost:5000/docs"]
-      interval: 5m
+      test: ['CMD-SHELL', 'pg_isready -U postgres']
+      interval: 5s
       timeout: 30s
-      retries: 3
+      retries: 6
     environment:
-      - POSTGRES_PASSWORD=password
-      - POSTGRES_USER=michal
-      - POSTGRES_DB=database
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=postgres
     ports:
       - '5432:5432'
     volumes:
-      - ./db-data:/var/lib/postgresql
+      - ./data/db:/var/lib/postgresql
+    restart: always
 
 
 
@@ -25,7 +26,6 @@ services:
     build: .
     hostname: apiflask_first
     healthcheck:
-      test: [ 'CMD','curl','-f', "http://localhost:5000/docs" ]
       interval: 5m
       timeout: 30s
       retries: 3
@@ -35,7 +35,8 @@ services:
     volumes:
       - .:/app
     depends_on:
-      - database
+      database:
+        condition: service_healthy
 
 
 
