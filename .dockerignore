@@ -2,3 +2,5 @@
 /fib.py
 /venv
 /requirements
+/__pycache__
+/data

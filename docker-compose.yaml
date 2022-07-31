@@ -20,8 +20,6 @@ services:
       - ./data/db:/var/lib/postgresql
     restart: always
 
-
-
   apiflask-first:
     build: .
     hostname: apiflask_first
